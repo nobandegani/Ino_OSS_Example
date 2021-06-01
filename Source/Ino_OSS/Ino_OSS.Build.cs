@@ -8,6 +8,25 @@ public class Ino_OSS : ModuleRules
 	{
 		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
 
-		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "HeadMountedDisplay" });
+        PrivateIncludePaths.AddRange(
+            new string[] {
+                "Settings",
+            }
+        );
+
+        PublicDependencyModuleNames.AddRange(
+            new string[] {
+                "Core",
+                "CoreUObject",
+                "Engine",
+                "InputCore",
+
+                "OnlineSubsystem",
+                "OnlineSubsystemUtils",
+
+                "HeadMountedDisplay",
+            }
+        );
+        
 	}
 }
