@@ -10,7 +10,7 @@ public class Ino_OSS : ModuleRules
 
         PrivateIncludePaths.AddRange(
             new string[] {
-                "Settings",
+                "Ino_Oss/Settings",
             }
         );
 
