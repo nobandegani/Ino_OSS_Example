@@ -13,5 +13,7 @@ UCLASS()
 class INO_OSS_API UGI_Ino : public UGameInstance
 {
 	GENERATED_BODY()
-	
+
+protected:
+	virtual void Init() override;
 };
