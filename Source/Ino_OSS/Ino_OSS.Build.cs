@@ -10,7 +10,8 @@ public class Ino_OSS : ModuleRules
 
         PrivateIncludePaths.AddRange(
             new string[] {
-                "Ino_Oss/Settings",
+                "Ino_OSS/FirsPersonTemplate",
+                "Ino_OSS/Settings",
             }
         );
 
@@ -20,11 +21,21 @@ public class Ino_OSS : ModuleRules
                 "CoreUObject",
                 "Engine",
                 "InputCore",
+                
+                "HeadMountedDisplay",
+                
+                "ApplicationCore",
 
                 "OnlineSubsystem",
                 "OnlineSubsystemUtils",
 
-                "HeadMountedDisplay",
+                "Http", 
+                "Json", 
+                "JsonUtilities",
+                
+                "Sockets",
+                "Networking",
+                
             }
         );
         
