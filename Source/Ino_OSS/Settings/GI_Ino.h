@@ -5,8 +5,8 @@
 #include "CoreMinimal.h"
 #include "Engine/GameInstance.h"
 
+#include "Online.h"
 #include "Http.h"
-
 
 #include "GI_Ino.generated.h"
 
@@ -20,7 +20,7 @@ class INO_OSS_API UGI_Ino : public UGameInstance
 
 public:
 	
-	FHttpModule* Http;
+	FHttpModule* Http = nullptr;
 
 	/* The actual HTTP call */
 	UFUNCTION(BlueprintCallable)
@@ -30,6 +30,15 @@ public:
 	/*Assign this function to call when the GET request processes sucessfully*/
 	void OnResponseReceived(FHttpRequestPtr Request, FHttpResponsePtr Response, bool bWasSuccessful);
 
+
+
+	IOnlineSubsystem* IOSS = nullptr;
+	IOnlineIdentityPtr IIdentityInterface = nullptr;
+	FOnlineAccountCredentials IAccount;
+
+	UFUNCTION(BlueprintCallable)
+	void ILogin();
+	void AutoLogin();
 protected:
 	virtual void Init() override;
 };

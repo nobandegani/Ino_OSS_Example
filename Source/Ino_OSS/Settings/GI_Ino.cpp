@@ -2,7 +2,7 @@
 
 
 #include "GI_Ino.h"
-
+#include "OnlineSubsystemIno/Private/OnlineAccountIno.h"
 //IOnlineSubsystem* ion = IOnlineSubsystem::Get(FName("Ino_OSS")); for forcing to get the ino_oss
 
 void UGI_Ino::MyHttpCall()
@@ -36,12 +36,38 @@ void UGI_Ino::OnResponseReceived(FHttpRequestPtr Request, FHttpResponsePtr Respo
 	}
 }
 
+void UGI_Ino::ILogin()
+{
+
+	IAccount.Type = "WordPress";
+	IAccount.Id = "myfuckingusername";
+	IAccount.Token = "myfuckingpassword";
+
+	if (IIdentityInterface.IsValid())
+	{
+		GEngine->AddOnScreenDebugMessage(0, 50.0f, FColor::Green, TEXT("nicely done!"));
+		IIdentityInterface->Login(0, IAccount);
+	} 
+	
+}
+
+void UGI_Ino::AutoLogin()
+{
+	IIdentityInterface->AutoLogin();
+}
+
 void UGI_Ino::Init()
 {
 	//ReceiveInit();
-	UE_LOG(LogTemp, Display, TEXT("gi is initialized"));
+	UE_LOG(LogTemp, Warning, TEXT("gi is initialized"));
 
-	Http = &FHttpModule::Get();
+	//Http = &FHttpModule::Get();
 	//MyHttpCall();
+
+	IOSS = IOnlineSubsystem::Get(FName("Ino"));
+	
+	//IOnlineSubsystem* ion = IOnlineSubsystem::Get(FName("Ino"));
+	IIdentityInterface = IOSS->GetIdentityInterface();
+
 }
 
